@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #000000; /* Black text */
-            --secondary-color: #0097EF; /* Bright blue for accents */
-            --bg-color: #FFFFFF; /* White background */
-            --footer-color: #0097EF; /* Bright blue bottom section */
+            --primary-color: #000000;
+            --secondary-color: #0097EF;
+            --bg-color: #FFFFFF;
+            --footer-color: #0097EF;
         }
 
         * {
@@ -26,11 +26,13 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background-color: var(--bg-color);
             padding: 1rem 2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-container {
@@ -66,11 +68,15 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 600;
+            transition: color 0.3s;
         }
 
-        /* Hero Section */
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
         .hero {
-            min-height: 70vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,9 +101,20 @@
             text-decoration: none;
             font-weight: 600;
             margin: 0.5rem;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary-color);
         }
 
-        /* Footer */
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--secondary-color);
+        }
+
         footer {
             background-color: var(--footer-color);
             color: white;
@@ -121,10 +138,45 @@
         .footer-links a {
             color: white;
             text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
         }
 
         .copyright {
             margin-top: 2rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
         /* Mobile Responsiveness */
@@ -136,11 +188,14 @@
             .hero h1 {
                 font-size: 2rem;
             }
+
+            .header-container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -158,19 +213,40 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section class="hero" id="home">
             <h1>Empowering Student Voices Across India</h1>
             <p>Join the largest student network working towards educational reforms and student rights.</p>
             <div>
                 <a href="#join" class="btn">Join Our Movement</a>
-                <a href="#about" class="btn" style="background: white; color: var(--secondary-color); border: 2px solid var(--secondary-color);">Learn More</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
             </div>
+        </section>
+
+        <section id="join" class="form-container">
+            <h2>Join Our Organization</h2>
+            <form id="joinForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="college">College/University</label>
+                    <input type="text" id="college" name="college">
+                </div>
+                <button type="submit" class="btn">Submit Application</button>
+            </form>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -184,5 +260,39 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('joinForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                formType: 'join',
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                college: document.getElementById('college').value
+            };
+
+            try {
+                const response = await fetch('YOUR_SCRIPT_DEPLOYMENT_URL', {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+                alert(result.message || 'Thank you for your submission!');
+                if (result.success) {
+                    document.getElementById('joinForm').reset();
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 </html>
