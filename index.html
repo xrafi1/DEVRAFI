@@ -7,47 +7,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #000000;
-            --bg-color: #ffffff;
-            --light-gray: #f5f5f5;
-            --transition: all 0.3s ease;
+            --primary-color: #000000; /* Black text */
+            --secondary-color: #0097EF; /* Bright blue for accents */
+            --bg-color: #FFFFFF; /* White background */
+            --footer-color: #0097EF; /* Bright blue bottom section */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            color: var(--text-color);
+            color: var(--primary-color);
             background-color: var(--bg-color);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
             background-color: var(--bg-color);
+            padding: 1rem 2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
         }
 
         .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo {
@@ -57,327 +48,58 @@
         }
 
         .logo img {
-            height: 50px;
-            transition: var(--transition);
+            height: 40px;
         }
 
         .logo-text {
-            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.3rem;
         }
 
         nav ul {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--primary-color);
             font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary-color);
-            transition: var(--transition);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 70vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            padding: 0 2rem;
-            margin-top: 80px;
-        }
-
-        .hero-content {
+            padding: 2rem;
             max-width: 800px;
-            animation: fadeInUp 1s ease-out;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 2rem;
             background-color: var(--secondary-color);
             color: white;
-            border: none;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--secondary-color);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            animation: fadeInRight 1s ease-out;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Leadership Section */
-        .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .leader-card {
-            background-color: var(--light-gray);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        .leader-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .leader-image {
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .leader-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .leader-card:hover .leader-image img {
-            transform: scale(1.1);
-        }
-
-        .leader-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .leader-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .leader-info p {
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .contact-info p {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info i {
-            margin-right: 0.5rem;
-            color: var(--secondary-color);
-        }
-
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            animation: fadeInRight 1s ease-out;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Join Section */
-        .join-form {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--light-gray);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-col {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .file-upload {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .file-upload label {
-            font-weight: 600;
-        }
-
-        .file-upload input[type="file"] {
-            padding: 0.5rem;
-            border: 1px dashed #ccc;
-            border-radius: 5px;
-            background-color: white;
-        }
-
-        .success-message {
-            display: none;
-            background-color: #2ecc71;
-            color: white;
-            padding: 1rem;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 1rem;
-            animation: fadeIn 0.5s ease-out;
+            margin: 0.5rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--footer-color);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
@@ -386,195 +108,33 @@
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .footer-links {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
             gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            text-align: left;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary-color);
-        }
-
-        .footer-section p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
+        .footer-links a {
             color: white;
-            font-size: 1.2rem;
-            transition: var(--transition);
+            text-decoration: none;
         }
 
-        .social-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
+        .copyright {
             margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .animate {
-            opacity: 0;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        .animate.animated {
-            opacity: 1;
-        }
-
-        .fadeInUp {
-            transform: translateY(20px);
-        }
-
-        .fadeInUp.animated {
-            transform: translateY(0);
-        }
-
-        .fadeInLeft {
-            transform: translateX(-20px);
-        }
-
-        .fadeInLeft.animated {
-            transform: translateX(0);
-        }
-
-        .fadeInRight {
-            transform: translateX(20px);
-        }
-
-        .fadeInRight.animated {
-            transform: translateX(0);
-        }
-
-        /* Responsive Styles */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            nav {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--bg-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-                z-index: 999;
-            }
-
-            nav.active {
-                left: 0;
-            }
-
             nav ul {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.2rem;
+                display: none;
             }
 
             .hero h1 {
                 font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
             }
         }
     </style>
@@ -584,317 +144,45 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <a href="#home"><img src="https://i.ibb.co/PvF92DRW/Black-Retro-Emblem-Tree-Root-Logo-20250714-010939-0000.png" alt="Voice of Students India Logo"></a>
+                <img src="https://i.ibb.co/PvF92DRW/Black-Retro-Emblem-Tree-Root-Logo-20250714-010939-0000.png" alt="Logo">
                 <span class="logo-text">Voice of Students India</span>
             </div>
-            <nav id="nav">
+            <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#leadership">Leadership</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#join">Join</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#join" class="btn">Join Now</a></li>
                 </ul>
             </nav>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Amplifying Student Voices Across India</h1>
-            <p>We are a nationwide organization dedicated to empowering students, advocating for their rights, and creating positive change in the education system.</p>
-            <a href="#join" class="btn">Join Us Today</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <h2 class="section-title">About Us</h2>
-        <div class="about-content">
-            <div class="about-text animate fadeInLeft">
-                <h3>Our Mission</h3>
-                <p>Voice of Students India was founded in 2020 with the vision to create a platform where students from all across India can voice their concerns, share ideas, and work together to improve the education system.</p>
-                <p>We believe that students are not just passive recipients of education but active stakeholders who should have a say in policies that affect their learning journey.</p>
-                <p>Our organization works at the grassroots level to identify issues faced by students, conduct research, and advocate for policy changes at both institutional and governmental levels.</p>
+    <!-- Main Content -->
+    <main>
+        <section class="hero" id="home">
+            <h1>Empowering Student Voices Across India</h1>
+            <p>Join the largest student network working towards educational reforms and student rights.</p>
+            <div>
+                <a href="#join" class="btn">Join Our Movement</a>
+                <a href="#about" class="btn" style="background: white; color: var(--secondary-color); border: 2px solid var(--secondary-color);">Learn More</a>
             </div>
-            <div class="about-image animate fadeInRight">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students discussing">
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section class="section" id="leadership">
-        <h2 class="section-title">Our Leadership</h2>
-        <div class="leadership-grid">
-            <div class="leader-card animate fadeInUp" style="animation-delay: 0.1s;">
-                <div class="leader-image">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Leader 1">
-                </div>
-                <div class="leader-info">
-                    <h3>Priya Sharma</h3>
-                    <p>Founder & President</p>
-                </div>
-            </div>
-            <div class="leader-card animate fadeInUp" style="animation-delay: 0.2s;">
-                <div class="leader-image">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Leader 2">
-                </div>
-                <div class="leader-info">
-                    <h3>Rahul Verma</h3>
-                    <p>Vice President</p>
-                </div>
-            </div>
-            <div class="leader-card animate fadeInUp" style="animation-delay: 0.3s;">
-                <div class="leader-image">
-                    <img src="https://images.unsplash.com/photo-1573497019707-1c04de26e64b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Leader 3">
-                </div>
-                <div class="leader-info">
-                    <h3>Ananya Patel</h3>
-                    <p>Secretary</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-info animate fadeInLeft">
-                <h3>Get In Touch</h3>
-                <p>We'd love to hear from you! Whether you have questions about our work, want to collaborate, or just want to say hello, feel free to reach out.</p>
-                
-                <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, New Delhi, India - 110001</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> contact@voiceofstudentsindia.org</p>
-                
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="contact-form animate fadeInRight">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="contactName">Name</label>
-                        <input type="text" id="contactName" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">Email</label>
-                        <input type="email" id="contactEmail" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactSubject">Subject</label>
-                        <input type="text" id="contactSubject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Section -->
-    <section class="section" id="join">
-        <h2 class="section-title">Join Our Movement</h2>
-        <div class="join-form animate fadeInUp">
-            <form id="membershipForm">
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" required>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea id="address" name="address" rows="3" required></textarea>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="institution">Class/Institution</label>
-                            <input type="text" id="institution" name="institution" required>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label for="idNumber">ID/Aadhar Number</label>
-                            <input type="text" id="idNumber" name="idNumber" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="file-upload">
-                        <label for="photo">Passport Size Photo</label>
-                        <input type="file" id="photo" name="photo" accept="image/*" required>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn">Submit Application</button>
-                <div class="success-message" id="successMessage">
-                    Thank you for your application! We'll get back to you soon.
-                </div>
-            </form>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>Voice of Students India is a national student organization working to empower students and advocate for better education policies.</p>
-                <p>Registered NGO under Indian Trust Act, 1882</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy Policy</a>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <p><a href="#home" style="color: white; text-decoration: none;">Home</a></p>
-                <p><a href="#about" style="color: white; text-decoration: none;">About</a></p>
-                <p><a href="#leadership" style="color: white; text-decoration: none;">Leadership</a></p>
-                <p><a href="#contact" style="color: white; text-decoration: none;">Contact</a></p>
-                <p><a href="#join" style="color: white; text-decoration: none;">Join</a></p>
+            <div class="copyright">
+                <p>&copy; 2024 Voice of Students India. All rights reserved.</p>
             </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, New Delhi</p>
-                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> contact@voiceofstudentsindia.org</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Voice of Students India. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('nav');
-
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            hamburger.innerHTML = nav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Smooth Scrolling for Navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Animation on Scroll
-        const animateElements = document.querySelectorAll('.animate');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        animateElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Form Submission
-        document.getElementById('membershipForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would normally send the form data to your server
-            // For demo purposes, we'll just show the success message
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Scroll to the success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-            
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                this.reset();
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
-            
-            // In a real implementation, you would use fetch() to send data to your Google Apps Script
-            // Example:
-            /*
-            const formData = new FormData(this);
-            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('successMessage').style.display = 'block';
-                this.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-            */
-        });
-
-        // Similarly for contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-    </script>
 </body>
 </html>
